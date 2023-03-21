@@ -14,13 +14,23 @@
 
 // for sort, find, count_if
 #include <algorithm>
-//for less_equal, bind2nd,...
+//for less_equal, bind,...
 #include <functional>
 
 // compose2 is not part of the C++ standard
-#include <ext/functional>
-using __gnu_cxx::compose2;
+// #include <ext/functional>
+// using __gnu_cxx::compose2;
 
+using namespace std::placeholders;
+
+#ifndef COMPOSE2
+#define COMPOSE2 1
+static std::function<bool(G4double)> compose2 (std::function<bool(bool, bool)> f, 
+                                        std::function<bool(G4double)> f1, 
+                                        std::function<bool(G4double)> f2){
+    return [&](G4double i) { return f(f1(i), f2(i));};
+}
+#endif
 
 
 class WCSimWCDigi : public G4VDigi
@@ -215,8 +225,8 @@ public:
     std::vector<G4double>::iterator found =
       std::find_if(tfirst,tlast,
 		   compose2(std::logical_and<bool>(),
-			    std::bind2nd(std::greater_equal<G4double>(),low),
-			    std::bind2nd(std::less_equal<G4double>(),upevent)
+			    std::bind(std::greater_equal<G4double>(),low, _1),
+			    std::bind(std::less_equal   <G4double>(),upevent, _1)
 			    )
 		   );
     if ( found != tlast ) {
