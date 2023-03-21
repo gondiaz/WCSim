@@ -174,8 +174,8 @@ G4VPhysicalVolume* WCSimDetectorConstruction::Construct()
 
   // Now set the visualization attributes of the logical volumes.
 
-  //   logicWCBox->SetVisAttributes(G4VisAttributes::Invisible);
-  logicExpHall->SetVisAttributes(G4VisAttributes::Invisible);
+  //   logicWCBox->SetVisAttributes(G4VisAttributes::GetInvisible());
+  logicExpHall->SetVisAttributes(G4VisAttributes::GetInvisible());
 
   //-----------------------------------------------------
   // Create and place the physical Volumes
