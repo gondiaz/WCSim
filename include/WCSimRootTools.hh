@@ -17,6 +17,8 @@ bool ComparisonPassed(int val1, int val2,
 		      const char * callerclass, const char * callerfunc, const char * tag);
 bool ComparisonPassed(long val1, long val2,
 		      const char * callerclass, const char * callerfunc, const char * tag);
+bool ComparisonPassed(long long val1, long long val2,
+		      const char * callerclass, const char * callerfunc, const char * tag);
 bool ComparisonPassed(float val1, float val2, 
 		      const char * callerclass, const char * callerfunc, const char * tag);
 bool ComparisonPassed(double val1, double val2, 

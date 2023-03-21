@@ -72,6 +72,20 @@ bool ComparisonPassed(long val1, long val2, const char * callerclass, const char
   }
 }
 
+bool ComparisonPassed(long long val1, long long val2, const char * callerclass, const char * callerfunc, const char * tag)
+{
+  if(val1 - val2) {
+    cerr << "INT" << callerclass << "::" << callerfunc << " " << tag << " not equal: " << val1 << ", " << val2 << " diff " << val1 - val2 << endl;
+    return false;
+  }
+  else {
+#ifdef VERBOSE_COMPARISON
+    cout << callerclass << "::" << callerfunc << " " << tag << " equal: " << val1 << ", " << val2 << endl;
+#endif
+    return true;
+  }
+}
+
 bool ComparisonPassed(float val1, float val2, const char * callerclass, const char * callerfunc, const char * tag)
 {
   if(TMath::Abs(val1 - val2) > kASmallNum) {
