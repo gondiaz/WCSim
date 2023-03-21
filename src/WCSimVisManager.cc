@@ -1,8 +1,6 @@
 // Visualization Manager
 
 
-#ifdef G4VIS_USE
-
 #include "WCSimVisManager.hh"
 #include "G4TrajectoryDrawByParticleID.hh"
 
@@ -13,10 +11,10 @@
 #include "G4DAWNFILE.hh"
 //#include "G4GAGTree.hh"
 #include "G4HepRepFile.hh"
-#include "G4HepRep.hh"
+// #include "G4HepRep.hh"
 #include "G4RayTracer.hh"
-#include "G4VRML1File.hh"
-#include "G4VRML2File.hh"
+// #include "G4VRML1File.hh"
+// #include "G4VRML2File.hh"
 
 // Needing external packages or libraries...
 
@@ -71,10 +69,10 @@ void WCSimVisManager::RegisterGraphicsSystems () {
   RegisterGraphicsSystem (new G4DAWNFILE);
   //RegisterGraphicsSystem (new G4GAGTree);
   RegisterGraphicsSystem (new G4HepRepFile);
-  RegisterGraphicsSystem (new G4HepRep);
+  // RegisterGraphicsSystem (new G4HepRep);
   RegisterGraphicsSystem (new G4RayTracer);
-  RegisterGraphicsSystem (new G4VRML1File);
-  RegisterGraphicsSystem (new G4VRML2File);
+  // RegisterGraphicsSystem (new G4VRML1File);
+  // RegisterGraphicsSystem (new G4VRML2File);
 
   // Graphics systems needing external packages or libraries...
 
@@ -146,12 +144,10 @@ void WCSimVisManager::RegisterGraphicsSystems () {
     G4cout <<
       "\nYou have successfully chosen to use the following graphics systems."
 	 << G4endl;
-    PrintAvailableGraphicsSystems (); //use this version for Geant4.10.1
-    //PrintAvailableGraphicsSystems (GetVerbosityValue(fVerbose)); //use this version for Geant4.10.2+
+    //PrintAvailableGraphicsSystems (); //use this version for Geant4.10.1
+    PrintAvailableGraphicsSystems (GetVerbosityValue(fVerbose)); //use this version for Geant4.10.2+
   }
   RegisterModel(mymodel);
 
 
 }
-
-#endif

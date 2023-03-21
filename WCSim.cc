@@ -16,10 +16,7 @@
 #include "WCSimSteppingAction.hh"
 #include "WCSimVisManager.hh"
 #include "WCSimRandomParameters.hh"
-
-#ifdef G4UI_USE
 #include "G4UIExecutive.hh"
-#endif
 
 void file_exists(const char * filename) {
   bool exists = access(filename, F_OK) != -1;
@@ -73,7 +70,7 @@ int main(int argc,char** argv)
   runManager->SetUserInitialization(physFactory);
 
   // Visualization
-  G4VisManager* visManager = new WCSimVisManager;
+  WCSimVisManager* visManager = new WCSimVisManager;
   visManager->Initialize();
 
   // Set user action classes
@@ -109,15 +106,11 @@ int main(int argc,char** argv)
     // G4UIsession* session =  new G4UIterminal(new G4UItcsh);
 
     //using working example N04 for Qt UI Compatible code
-#ifdef G4UI_USE
     G4UIExecutive * ui = new G4UIExecutive(argc,argv);
-#ifdef G4VIS_USE
     // Visualization Macro
     UI->ApplyCommand("/control/execute WCSim.mac");
-#endif
     ui->SessionStart();
     delete ui;
-#endif
 
     // Start Interactive Mode
     // session->SessionStart();
