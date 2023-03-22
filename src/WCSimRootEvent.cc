@@ -19,14 +19,14 @@ using std::endl;
 using std::vector;
 
 #ifndef REFLEX_DICTIONARY
-ClassImp(WCSimRootCherenkovDigiHit)
-ClassImp(WCSimRootCherenkovHit)
-ClassImp(WCSimRootCherenkovHitTime)
-ClassImp(WCSimRootTrack)
-ClassImp(WCSimRootPi0)
-ClassImp(WCSimRootEventHeader)
-ClassImp(WCSimRootTrigger)
-ClassImp(WCSimRootEvent)
+//ClassImp(WCSimRootCherenkovDigiHit)
+//ClassImp(WCSimRootCherenkovHit)
+//ClassImp(WCSimRootCherenkovHitTime)
+//ClassImp(WCSimRootTrack)
+//ClassImp(WCSimRootPi0)
+//ClassImp(WCSimRootEventHeader)
+//ClassImp(WCSimRootTrigger)
+//ClassImp(WCSimRootEvent)
 #endif
 
 //TClonesArray* WCSimRootTrigger::fgTracks = 0;

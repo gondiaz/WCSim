@@ -42,7 +42,7 @@ public:
   Float_t GetOrientation(Int_t i=0) const {return (i<3) ? fOrientation[i] : 0;}
   Float_t GetPosition(Int_t i=0) const {return (i<3) ? fPosition[i] : 0;}
 
-  ClassDef(WCSimRootPMT,1)  //WCSimPMT structure
+  //ClassDef(WCSimRootPMT,1)  //WCSimPMT structure
 };
 
 
@@ -105,7 +105,7 @@ public:
   WCSimRootPMT GetPMT(Int_t i){return *(WCSimRootPMT*)(*fPMTArray)[i];}
   const WCSimRootPMT * GetPMTPtr(Int_t i) const {return (WCSimRootPMT*)(fPMTArray->At(i));}
 
-  ClassDef(WCSimRootGeom,1)  //WCSimRootEvent structure
+  //ClassDef(WCSimRootGeom,1)  //WCSimRootEvent structure
 };
 
 

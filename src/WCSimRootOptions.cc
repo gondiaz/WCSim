@@ -6,7 +6,7 @@
 #include "WCSimRootOptions.hh"
 
 #ifndef REFLEX_DICTIONARY
-ClassImp(WCSimRootOptions)
+//ClassImp(WCSimRootOptions)
 #endif
 
 using std::endl;

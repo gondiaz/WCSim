@@ -77,7 +77,7 @@ public:
   Double_t   GetTime() const { return fTime;}
   Int_t     GetId() const {return fId;}
 
-  ClassDef(WCSimRootTrack,1)  
+  //ClassDef(WCSimRootTrack,1)  
 };
 
 
@@ -102,7 +102,7 @@ public:
   Int_t GetTubeID()       const { return fTubeID;}
   Int_t GetTotalPe(int i) const { return (i<2) ? fTotalPe[i]: 0;}
 
-  ClassDef(WCSimRootCherenkovHit,1)  
+  //ClassDef(WCSimRootCherenkovHit,1)  
 };
 
 class WCSimRootCherenkovHitTime : public TObject {
@@ -122,7 +122,7 @@ public:
   Double_t   GetTruetime() const { return fTruetime;}
   Int_t     GetParentID() const { return fPrimaryParentID;}
 
-  ClassDef(WCSimRootCherenkovHitTime,1)  
+  //ClassDef(WCSimRootCherenkovHitTime,1)  
 };
 
 
@@ -152,7 +152,7 @@ public:
   Int_t       GetTubeId() const { return fTubeId;}
   std::vector<int> GetPhotonIds() const { return fPhotonIds; }
 
-  ClassDef(WCSimRootCherenkovDigiHit,2)  
+  //ClassDef(WCSimRootCherenkovDigiHit,2)  
 };
 
 
@@ -178,7 +178,7 @@ public:
   Int_t GetSubEvtNumber() const { return fSubEvtNumber;}
   
 
-   ClassDef(WCSimRootEventHeader,2)  //WCSimRootEvent Header
+   //ClassDef(WCSimRootEventHeader,2)  //WCSimRootEvent Header
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -208,7 +208,7 @@ public:
   Float_t  GetGammaE(int i)           const { return (i<2) ? fGammaE[i]: 0;}
   Float_t  GetGammaVtx(int i, int j)  const { return fGammaVtx[i][j];}
 
-  ClassDef(WCSimRootPi0,1)
+  //ClassDef(WCSimRootPi0,1)
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -353,7 +353,7 @@ public:
   WCSimRootCherenkovDigiHit * RemoveCherenkovDigiHit(WCSimRootCherenkovDigiHit * digit);
   TClonesArray            *GetCherenkovDigiHits() const {return fCherenkovDigiHits;}
 
-  ClassDef(WCSimRootTrigger,3) //WCSimRootEvent structure
+  //ClassDef(WCSimRootTrigger,3) //WCSimRootEvent structure
 };
 
 
@@ -418,7 +418,7 @@ private:
   //std::vector<WCSimRootTrigger*> fEventList;
   TObjArray* fEventList;
   Int_t Current;                      //!               means transient, not writable to file
-  ClassDef(WCSimRootEvent,1)
+  //ClassDef(WCSimRootEvent,1)
 
 };
 

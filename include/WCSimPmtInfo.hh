@@ -38,7 +38,7 @@ public:
   Double_t Get_orienz() {return orien_z;}
   Int_t Get_tubeid(){return tube;}
 
-  ClassDef(WCSimPmtInfo,1);
+  //ClassDef(WCSimPmtInfo,1);
 };
 
 #endif

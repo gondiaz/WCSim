@@ -198,7 +198,7 @@ private:
   int                    RandomSeed;
   WCSimRandomGenerator_t RandomGenerator;
   
-  ClassDef(WCSimRootOptions,4)
+  //ClassDef(WCSimRootOptions,4)
 };
 
 
