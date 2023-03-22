@@ -214,15 +214,15 @@ private:
   {
 
 
-    if(choice == "ns" || choice=="nanosecond")
+    if      (choice == "ns" || choice=="nanosecond")
       fTimeUnit=CLHEP::nanosecond;//*second;
-    else if(choice == "s" || choice=="second")
+    else if (choice == "s" || choice=="second")
       fTimeUnit=CLHEP::second;
-    else if (choice = "ms" || choice=="millisecond")
+    else if (choice == "ms" || choice=="millisecond")
       fTimeUnit=CLHEP::millisecond;
-    else if (choice="microsecond")
+    else if (choice == "microsecond")
       fTimeUnit=CLHEP::microsecond;
-    else if(choice="ps" || choice=="picosecond")
+    else if (choice == "ps" || choice=="picosecond")
       fTimeUnit=CLHEP::picosecond;
     else
       fTimeUnit=CLHEP::nanosecond;
