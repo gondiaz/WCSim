@@ -12,28 +12,16 @@
 //for less_equal, bind2nd,...
 #include <functional>
 
-// compose2 is not part of the C++ standard
-// use this kludgy technique to use it
-#include <ext/functional>
-using __gnu_cxx::identity_element;
-using __gnu_cxx::unary_compose;
-using __gnu_cxx::binary_compose;
-using __gnu_cxx::compose1;
-using __gnu_cxx::compose2;
-using __gnu_cxx::identity;
-using __gnu_cxx::select1st;
-using __gnu_cxx::select2nd;
-using __gnu_cxx::project1st;
-using __gnu_cxx::project2nd;
-using __gnu_cxx::constant_void_fun;
-using __gnu_cxx::constant_unary_fun;
-using __gnu_cxx::constant_binary_fun;
-using __gnu_cxx::constant0;
-using __gnu_cxx::constant1;
-using __gnu_cxx::constant2;
-using __gnu_cxx::subtractive_rng;
-using __gnu_cxx::mem_fun1;
-using __gnu_cxx::mem_fun1_ref;
+using namespace std::placeholders;
+
+#ifndef COMPOSE2
+#define COMPOSE2 1
+static std::function<bool(G4double)> compose2 (std::function<bool(bool, bool)> f, 
+                                        std::function<bool(G4double)> f1, 
+                                        std::function<bool(G4double)> f2){
+    return [&](G4double i) { return f(f1(i), f2(i));};
+}
+#endif
 
 
 
@@ -107,8 +95,8 @@ class WCSimWCHit : public G4VHit
     std::vector<G4float>::iterator found = 
       std::find_if(tfirst,tlast,
 		   compose2(std::logical_and<bool>(),
-			    std::bind2nd(std::greater_equal<G4float>(),low),
-			    std::bind2nd(std::less_equal<G4float>(),upevent)
+			    std::bind(std::greater_equal<G4double>(),    low, _1),
+          std::bind(std::less_equal   <G4double>(),upevent, _1)
 			    )
 		   );
     if ( found != tlast ) {
@@ -136,8 +124,8 @@ class WCSimWCHit : public G4VHit
     
     G4int number = std::count_if(tfirst,tlast,
 				 compose2(std::logical_and<bool>(),
-					  std::bind2nd(std::greater_equal<G4float>(),low),
-					  std::bind2nd(std::less_equal<G4float>(),mintime)
+            std::bind(std::greater_equal<G4double>(),    low, _1),
+            std::bind(std::less_equal   <G4double>(),mintime, _1)
 					  )
 				 );
     
