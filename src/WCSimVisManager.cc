@@ -1,8 +1,5 @@
 // Visualization Manager
 
-
-#ifdef G4VIS_USE
-
 #include "WCSimVisManager.hh"
 #include "G4TrajectoryDrawByParticleID.hh"
 
@@ -153,5 +150,3 @@ void WCSimVisManager::RegisterGraphicsSystems () {
 
 
 }
-
-#endif
