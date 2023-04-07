@@ -139,7 +139,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinder()
    G4VisAttributes* showColor = new G4VisAttributes(G4Colour(0.0,1.0,0.0));
    logicWC->SetVisAttributes(showColor);
 
-   logicWC->SetVisAttributes(G4VisAttributes::Invisible); //amb79
+   logicWC->SetVisAttributes(G4VisAttributes::GetInvisible()); //amb79
   
   //-----------------------------------------------------
   // everything else is contained in this water tubs
@@ -169,11 +169,11 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinder()
 
 // This volume needs to made invisible to view the blacksheet and PMTs with RayTracer
   if (Vis_Choice == "RayTracer")
-   {logicWCBarrel->SetVisAttributes(G4VisAttributes::Invisible);} 
+   {logicWCBarrel->SetVisAttributes(G4VisAttributes::GetInvisible());} 
 
   else
    {//{if(!debugMode)
-    //logicWCBarrel->SetVisAttributes(G4VisAttributes::Invisible);} 
+    //logicWCBarrel->SetVisAttributes(G4VisAttributes::GetInvisible());} 
    }
 	
   //----------------- example CADMesh -----------------------
@@ -245,7 +245,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinder()
 		      0,
 			  checkOverlaps);
 if(!debugMode)
-   logicWCBarrelAnnulus->SetVisAttributes(G4VisAttributes::Invisible); //amb79
+   logicWCBarrelAnnulus->SetVisAttributes(G4VisAttributes::GetInvisible()); //amb79
 
   //-----------------------------------------------------
   // Subdivide the BarrelAnnulus into rings
@@ -281,7 +281,7 @@ if(!debugMode)
 	tmpVisAtt->SetForceWireframe(true);// This line is used to give definition to the rings in OGLSX Visualizer
 	logicWCBarrelRing->SetVisAttributes(tmpVisAtt);
 	//If you want the rings on the Annulus to show in OGLSX, then comment out the line below.
-	logicWCBarrelRing->SetVisAttributes(G4VisAttributes::Invisible);
+	logicWCBarrelRing->SetVisAttributes(G4VisAttributes::GetInvisible());
   }
 else {
         G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(0,0.5,1.));
@@ -323,7 +323,7 @@ else {
   	tmpVisAtt->SetForceSolid(true);// This line is used to give definition to the cells in OGLSX Visualizer
   	logicWCBarrelCell->SetVisAttributes(tmpVisAtt); 
 	//If you want the columns on the Annulus to show in OGLSX, then comment out the line below.
-  	logicWCBarrelCell->SetVisAttributes(G4VisAttributes::Invisible);
+  	logicWCBarrelCell->SetVisAttributes(G4VisAttributes::GetInvisible());
 	}
   else {
   	G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
@@ -391,14 +391,14 @@ if (Vis_Choice == "RayTracer"){
       if(!debugMode)
         logicWCBarrelCellBlackSheet->SetVisAttributes(WCBarrelBlackSheetCellVisAtt);
       else
-		logicWCBarrelCellBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);}
+		logicWCBarrelCellBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());}
 
 else {
 
    G4VisAttributes* WCBarrelBlackSheetCellVisAtt 
       = new G4VisAttributes(G4Colour(0.2,0.9,0.2));
       if(!debugMode)
-        logicWCBarrelCellBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);
+        logicWCBarrelCellBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());
       else
         logicWCBarrelCellBlackSheet->SetVisAttributes(WCBarrelBlackSheetCellVisAtt);}
 
@@ -454,7 +454,7 @@ else {
 
  
 
-    logicWCExtraTower->SetVisAttributes(G4VisAttributes::Invisible);
+    logicWCExtraTower->SetVisAttributes(G4VisAttributes::GetInvisible());
   //-------------------------------------------
   // subdivide the extra tower into cells  
   //------------------------------------------
@@ -484,7 +484,7 @@ else {
     G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
   	tmpVisAtt->SetForceSolid(true);// This line is used to give definition to the cells in OGLSX Visualizer
   	//logicWCExtraTowerCell->SetVisAttributes(tmpVisAtt); 
-	logicWCExtraTowerCell->SetVisAttributes(G4VisAttributes::Invisible);
+	logicWCExtraTowerCell->SetVisAttributes(G4VisAttributes::GetInvisible());
 	//TF vis.
 
     //---------------------------------------------
@@ -540,7 +540,7 @@ else {
       = new G4VisAttributes(G4Colour(0.2,0.9,0.2)); // green color
 
 	if(!debugMode)
-	  {logicWCTowerBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);}
+	  {logicWCTowerBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());}
 	else
 	  {logicWCTowerBlackSheet->SetVisAttributes(WCBarrelBlackSheetCellVisAtt);}}
   
@@ -562,7 +562,7 @@ else {
       = new G4VisAttributes(G4Colour(0.2,0.9,0.2)); // green color
 
 	if(!debugMode)
-	  {logicWCTowerBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);}
+	  {logicWCTowerBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());}
 	else
 	  {logicWCTowerBlackSheet->SetVisAttributes(WCBarrelBlackSheetCellVisAtt);}}
   
@@ -723,7 +723,7 @@ else {
 
   /*These lines of code will give color and volume to the PMTs if it hasn't been set in WCSimConstructPMT.cc.
 I recommend setting them in WCSimConstructPMT.cc. 
-If used here, uncomment the SetVisAttributes(WClogic) line, and comment out the SetVisAttributes(G4VisAttributes::Invisible) line.*/
+If used here, uncomment the SetVisAttributes(WClogic) line, and comment out the SetVisAttributes(G4VisAttributes::GetInvisible()) line.*/
   
   G4VisAttributes* WClogic 
       = new G4VisAttributes(G4Colour(0.4,0.0,0.8));
@@ -731,7 +731,7 @@ If used here, uncomment the SetVisAttributes(WClogic) line, and comment out the 
 	 WClogic->SetForceAuxEdgeVisible(true);
 
     //logicWCPMT->SetVisAttributes(WClogic);
-	 //logicWCPMT->SetVisAttributes(G4VisAttributes::Invisible);
+	 //logicWCPMT->SetVisAttributes(G4VisAttributes::GetInvisible());
 
   //jl145------------------------------------------------
   // Add top veto PMTs
@@ -878,11 +878,11 @@ If used here, uncomment the SetVisAttributes(WClogic) line, and comment out the 
  // These lines make the large cap volume invisible to view the caps blacksheets. Need to make invisible for 
  // RayTracer
   if (Vis_Choice == "RayTracer"){
-	logicBottomCapAssembly->SetVisAttributes(G4VisAttributes::Invisible);
-	logicTopCapAssembly->SetVisAttributes(G4VisAttributes::Invisible);
+	logicBottomCapAssembly->SetVisAttributes(G4VisAttributes::GetInvisible());
+	logicTopCapAssembly->SetVisAttributes(G4VisAttributes::GetInvisible());
   } else {
-	logicBottomCapAssembly->SetVisAttributes(G4VisAttributes::Invisible);
-	logicTopCapAssembly->SetVisAttributes(G4VisAttributes::Invisible);
+	logicBottomCapAssembly->SetVisAttributes(G4VisAttributes::GetInvisible());
+	logicTopCapAssembly->SetVisAttributes(G4VisAttributes::GetInvisible());
   }
 
   G4VPhysicalVolume* physiTopCapAssembly =
@@ -967,7 +967,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCaps(G4int zflip)
     G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
   	tmpVisAtt->SetForceSolid(true);// This line is used to give definition to the cells in OGLSX Visualizer
   	//logicWCBarrelBorderRing->SetVisAttributes(tmpVisAtt); 
-    logicWCBarrelBorderRing->SetVisAttributes(G4VisAttributes::Invisible); 
+    logicWCBarrelBorderRing->SetVisAttributes(G4VisAttributes::GetInvisible()); 
 	//TF vis.
   }
 
@@ -1007,12 +1007,12 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCaps(G4int zflip)
         G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
         tmpVisAtt->SetForceSolid(true);
         logicWCBarrelBorderCell->SetVisAttributes(tmpVisAtt);
-		logicWCBarrelBorderCell->SetVisAttributes(G4VisAttributes::Invisible);}
+		logicWCBarrelBorderCell->SetVisAttributes(G4VisAttributes::GetInvisible());}
   else {
         G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
         tmpVisAtt->SetForceWireframe(true);
         logicWCBarrelBorderCell->SetVisAttributes(tmpVisAtt);
-		logicWCBarrelBorderCell->SetVisAttributes(G4VisAttributes::Invisible);}}
+		logicWCBarrelBorderCell->SetVisAttributes(G4VisAttributes::GetInvisible());}}
 
 // used for OGLSX
  else {
@@ -1022,7 +1022,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCaps(G4int zflip)
 		  G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
 		  tmpVisAtt->SetForceSolid(true);
 		  logicWCBarrelBorderCell->SetVisAttributes(tmpVisAtt);
-		  logicWCBarrelBorderCell->SetVisAttributes(G4VisAttributes::Invisible);
+		  logicWCBarrelBorderCell->SetVisAttributes(G4VisAttributes::GetInvisible());
 		}
   else {
         G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
@@ -1081,13 +1081,13 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCaps(G4int zflip)
     if(!debugMode)
       logicWCBarrelBorderCellBlackSheet->SetVisAttributes(WCBarrelBlackSheetCellVisAtt);
     else
-    logicWCBarrelBorderCellBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);}
+    logicWCBarrelBorderCellBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());}
   else {
 
     G4VisAttributes* WCBarrelBlackSheetCellVisAtt 
       = new G4VisAttributes(G4Colour(0.2,0.9,0.2));
     if(!debugMode)
-      logicWCBarrelBorderCellBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);
+      logicWCBarrelBorderCellBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());
     else
       logicWCBarrelBorderCellBlackSheet->SetVisAttributes(WCBarrelBlackSheetCellVisAtt);}
 
@@ -1136,7 +1136,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCaps(G4int zflip)
     G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
   	tmpVisAtt->SetForceSolid(true);// This line is used to give definition to the cells in OGLSX Visualizer
   	logicWCExtraBorderCell->SetVisAttributes(tmpVisAtt); 
-	logicWCExtraBorderCell->SetVisAttributes(G4VisAttributes::Invisible);
+	logicWCExtraBorderCell->SetVisAttributes(G4VisAttributes::GetInvisible());
 	//TF vis.
 
     G4double extraBorderBlackSheetRmin[3];
@@ -1197,7 +1197,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCaps(G4int zflip)
           = new G4VisAttributes(G4Colour(0.2,0.9,0.2)); // green color
 
       if(!debugMode)
-        {logicWCExtraBorderBlackSheetCell->SetVisAttributes(G4VisAttributes::Invisible);}
+        {logicWCExtraBorderBlackSheetCell->SetVisAttributes(G4VisAttributes::GetInvisible());}
       else
         {logicWCExtraBorderBlackSheetCell->SetVisAttributes(WCBarrelBlackSheetCellVisAtt);}}
 
@@ -1287,7 +1287,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCaps(G4int zflip)
     G4VisAttributes* tmpVisAtt2 = new G4VisAttributes(G4Colour(1,0.5,0.5));
 	tmpVisAtt2->SetForceSolid(true);
 	logicWCCap->SetVisAttributes(tmpVisAtt2);
-    logicWCCap->SetVisAttributes(G4VisAttributes::Invisible);
+    logicWCCap->SetVisAttributes(G4VisAttributes::GetInvisible());
 
   } else{
 	
@@ -1302,7 +1302,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCaps(G4int zflip)
     G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
   	tmpVisAtt->SetForceSolid(true);// This line is used to give definition to the cells in OGLSX Visualizer
   	//logicWCCap->SetVisAttributes(tmpVisAtt); 
-    logicWCCap->SetVisAttributes(G4VisAttributes::Invisible);
+    logicWCCap->SetVisAttributes(G4VisAttributes::GetInvisible());
 	//TF vis.
 
   } else
@@ -1400,7 +1400,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCaps(G4int zflip)
    = new G4VisAttributes(G4Colour(0.9,0.2,0.2));
  
 	if(!debugMode)
-        logicWCCapBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);
+        logicWCCapBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());
     else
         logicWCCapBlackSheet->SetVisAttributes(WCCapBlackSheetVisAtt);}
 
@@ -1411,7 +1411,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCaps(G4int zflip)
    = new G4VisAttributes(G4Colour(1.0,1.0,0.0));
 
 	if(!debugMode)
-       //logicWCCapBlackSheet->SetVisAttributes(G4VisAttributes::Invisible); //Use this line if you want to make the blacksheet on the caps invisible to view through
+       //logicWCCapBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible()); //Use this line if you want to make the blacksheet on the caps invisible to view through
 	   logicWCCapBlackSheet->SetVisAttributes(WCCapBlackSheetVisAtt);
     else
         logicWCCapBlackSheet->SetVisAttributes(WCCapBlackSheetVisAtt);}
@@ -1667,7 +1667,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinderNoReplica()
    G4VisAttributes* showColor = new G4VisAttributes(G4Colour(0.0,1.0,0.0));
    logicWC->SetVisAttributes(showColor);
 
-   logicWC->SetVisAttributes(G4VisAttributes::Invisible); //amb79
+   logicWC->SetVisAttributes(G4VisAttributes::GetInvisible()); //amb79
   
   //-----------------------------------------------------
   // everything else is contained in this water tubs
@@ -1697,11 +1697,11 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinderNoReplica()
 
 // This volume needs to made invisible to view the blacksheet and PMTs with RayTracer
   if (Vis_Choice == "RayTracer")
-   {logicWCBarrel->SetVisAttributes(G4VisAttributes::Invisible);} 
+   {logicWCBarrel->SetVisAttributes(G4VisAttributes::GetInvisible());} 
 
   else
    {//{if(!debugMode)
-    //logicWCBarrel->SetVisAttributes(G4VisAttributes::Invisible);} 
+    //logicWCBarrel->SetVisAttributes(G4VisAttributes::GetInvisible());} 
    }
 	
   //----------------- example CADMesh -----------------------
@@ -1781,7 +1781,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinderNoReplica()
 		      0,
 			  checkOverlaps);
   if(!debugMode)
-    logicWCBarrelAnnulus->SetVisAttributes(G4VisAttributes::Invisible); //amb79
+    logicWCBarrelAnnulus->SetVisAttributes(G4VisAttributes::GetInvisible()); //amb79
 
   if(!debugMode)
   {
@@ -1789,7 +1789,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinderNoReplica()
     tmpVisAtt->SetForceWireframe(true);// This line is used to give definition to the rings in OGLSX Visualizer
     logicWCBarrelAnnulus->SetVisAttributes(tmpVisAtt);
     //If you want the rings on the Annulus to show in OGLSX, then comment out the line below.
-    logicWCBarrelAnnulus->SetVisAttributes(G4VisAttributes::Invisible);
+    logicWCBarrelAnnulus->SetVisAttributes(G4VisAttributes::GetInvisible());
   }
   else {
     G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(0,0.5,1.));
@@ -1864,7 +1864,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinderNoReplica()
     }
     else
     {
-      logicWCBarrelAnnulusBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);
+      logicWCBarrelAnnulusBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());
     }
   }
 
@@ -1874,7 +1874,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinderNoReplica()
       = new G4VisAttributes(G4Colour(0.2,0.9,0.2));
     if(!debugMode)
     {
-      logicWCBarrelAnnulusBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);
+      logicWCBarrelAnnulusBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());
     }
     else
     {
@@ -1930,7 +1930,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinderNoReplica()
 			0,
 			checkOverlaps);
 
-    logicWCExtraTower->SetVisAttributes(G4VisAttributes::Invisible);
+    logicWCExtraTower->SetVisAttributes(G4VisAttributes::GetInvisible());
     
     G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
   	tmpVisAtt->SetForceSolid(true);// This line is used to give definition to the cells in OGLSX Visualizer
@@ -2001,7 +2001,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinderNoReplica()
         = new G4VisAttributes(G4Colour(0.2,0.9,0.2)); // green color
 
       if(!debugMode)
-        {logicWCTowerBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);}
+        {logicWCTowerBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());}
       else
         {logicWCTowerBlackSheet->SetVisAttributes(WCBarrelBlackSheetCellVisAtt);}
     }
@@ -2163,7 +2163,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinderNoReplica()
 
   /*These lines of code will give color and volume to the PMTs if it hasn't been set in WCSimConstructPMT.cc.
   I recommend setting them in WCSimConstructPMT.cc. 
-  If used here, uncomment the SetVisAttributes(WClogic) line, and comment out the SetVisAttributes(G4VisAttributes::Invisible) line.*/
+  If used here, uncomment the SetVisAttributes(WClogic) line, and comment out the SetVisAttributes(G4VisAttributes::GetInvisible()) line.*/
   
   G4VisAttributes* WClogic 
       = new G4VisAttributes(G4Colour(0.4,0.0,0.8));
@@ -2171,7 +2171,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinderNoReplica()
 	WClogic->SetForceAuxEdgeVisible(true);
 
   //logicWCPMT->SetVisAttributes(WClogic);
-	//logicWCPMT->SetVisAttributes(G4VisAttributes::Invisible);
+	//logicWCPMT->SetVisAttributes(G4VisAttributes::GetInvisible());
 
   //jl145------------------------------------------------
   // Add top veto PMTs
@@ -2381,11 +2381,11 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinderNoReplica()
  // These lines make the large cap volume invisible to view the caps blacksheets. Need to make invisible for 
  // RayTracer
   if (Vis_Choice == "RayTracer"){
-    logicBottomCapAssembly->SetVisAttributes(G4VisAttributes::Invisible);
-    logicTopCapAssembly->SetVisAttributes(G4VisAttributes::Invisible);
+    logicBottomCapAssembly->SetVisAttributes(G4VisAttributes::GetInvisible());
+    logicTopCapAssembly->SetVisAttributes(G4VisAttributes::GetInvisible());
   } else {
-    logicBottomCapAssembly->SetVisAttributes(G4VisAttributes::Invisible);
-    logicTopCapAssembly->SetVisAttributes(G4VisAttributes::Invisible);
+    logicBottomCapAssembly->SetVisAttributes(G4VisAttributes::GetInvisible());
+    logicTopCapAssembly->SetVisAttributes(G4VisAttributes::GetInvisible());
   }
 
   G4VPhysicalVolume* physiTopCapAssembly =
@@ -2476,13 +2476,13 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCapsNoReplica(G4int zflip)
       G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
       tmpVisAtt->SetForceSolid(true);
       logicWCBarrelBorderRing->SetVisAttributes(tmpVisAtt);
-      logicWCBarrelBorderRing->SetVisAttributes(G4VisAttributes::Invisible);
+      logicWCBarrelBorderRing->SetVisAttributes(G4VisAttributes::GetInvisible());
     }
     else {
       G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
       tmpVisAtt->SetForceWireframe(true);
       logicWCBarrelBorderRing->SetVisAttributes(tmpVisAtt);
-      logicWCBarrelBorderRing->SetVisAttributes(G4VisAttributes::Invisible);
+      logicWCBarrelBorderRing->SetVisAttributes(G4VisAttributes::GetInvisible());
     }
   }
   // used for OGLSX
@@ -2492,7 +2492,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCapsNoReplica(G4int zflip)
         G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
         tmpVisAtt->SetForceSolid(true);
         logicWCBarrelBorderRing->SetVisAttributes(tmpVisAtt);
-        logicWCBarrelBorderRing->SetVisAttributes(G4VisAttributes::Invisible);
+        logicWCBarrelBorderRing->SetVisAttributes(G4VisAttributes::GetInvisible());
     }
     else {
       G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
@@ -2562,7 +2562,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCapsNoReplica(G4int zflip)
     }
     else
     {
-      logicWCBarrelBorderBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);
+      logicWCBarrelBorderBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());
     }
   }
 
@@ -2572,7 +2572,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCapsNoReplica(G4int zflip)
       = new G4VisAttributes(G4Colour(0.2,0.9,0.2));
     if(!debugMode)
     {
-      logicWCBarrelBorderBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);
+      logicWCBarrelBorderBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());
     }
     else
     {
@@ -2626,7 +2626,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCapsNoReplica(G4int zflip)
     G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
   	tmpVisAtt->SetForceSolid(true);// This line is used to give definition to the cells in OGLSX Visualizer
   	logicWCExtraBorderCell->SetVisAttributes(tmpVisAtt); 
-	  logicWCExtraBorderCell->SetVisAttributes(G4VisAttributes::Invisible);
+	  logicWCExtraBorderCell->SetVisAttributes(G4VisAttributes::GetInvisible());
 	  //TF vis.
 
     // add black sheet to the ExtraBorder cell
@@ -2688,7 +2688,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCapsNoReplica(G4int zflip)
         = new G4VisAttributes(G4Colour(0.2,0.9,0.2)); // green color
 
       if(!debugMode)
-        {logicWCExtraBorderBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);}
+        {logicWCExtraBorderBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());}
       else
         {logicWCExtraBorderBlackSheet->SetVisAttributes(WCBarrelBlackSheetCellVisAtt);}
     }
@@ -2786,7 +2786,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCapsNoReplica(G4int zflip)
       G4VisAttributes* tmpVisAtt2 = new G4VisAttributes(G4Colour(1,0.5,0.5));
       tmpVisAtt2->SetForceSolid(true);
       logicWCCap->SetVisAttributes(tmpVisAtt2);
-      logicWCCap->SetVisAttributes(G4VisAttributes::Invisible);
+      logicWCCap->SetVisAttributes(G4VisAttributes::GetInvisible());
 
     } else{
     
@@ -2803,7 +2803,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCapsNoReplica(G4int zflip)
       G4VisAttributes* tmpVisAtt = new G4VisAttributes(G4Colour(1.,0.5,0.5));
       tmpVisAtt->SetForceSolid(true);// This line is used to give definition to the cells in OGLSX Visualizer
       //logicWCCap->SetVisAttributes(tmpVisAtt); 
-      logicWCCap->SetVisAttributes(G4VisAttributes::Invisible);
+      logicWCCap->SetVisAttributes(G4VisAttributes::GetInvisible());
     //TF vis.
 
     } else {
@@ -2906,7 +2906,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCapsNoReplica(G4int zflip)
     = new G4VisAttributes(G4Colour(0.9,0.2,0.2));
   
     if(!debugMode)
-          logicWCCapBlackSheet->SetVisAttributes(G4VisAttributes::Invisible);
+          logicWCCapBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible());
       else
           logicWCCapBlackSheet->SetVisAttributes(WCCapBlackSheetVisAtt);}
 
@@ -2917,7 +2917,7 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCapsNoReplica(G4int zflip)
     = new G4VisAttributes(G4Colour(1.0,1.0,0.0));
 
     if(!debugMode)
-        //logicWCCapBlackSheet->SetVisAttributes(G4VisAttributes::Invisible); //Use this line if you want to make the blacksheet on the caps invisible to view through
+        //logicWCCapBlackSheet->SetVisAttributes(G4VisAttributes::GetInvisible()); //Use this line if you want to make the blacksheet on the caps invisible to view through
       logicWCCapBlackSheet->SetVisAttributes(WCCapBlackSheetVisAtt);
       else
           logicWCCapBlackSheet->SetVisAttributes(WCCapBlackSheetVisAtt);}
