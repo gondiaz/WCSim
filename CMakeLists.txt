@@ -43,6 +43,10 @@ ROOT_GENERATE_DICTIONARY(WCSimRootDict ${CMAKE_CURRENT_SOURCE_DIR}/include/WCSim
 add_library(WCSimRoot SHARED ./src/WCSimRootEvent.cc ./src/WCSimRootGeom.cc ./src/WCSimPmtInfo.cc ./src/WCSimEnumerations.cc ./src/WCSimRootOptions.cc ./src/TJNuBeamFlux.cc ./src/TNRooTrackerVtx.cc WCSimRootDict.cxx)
 target_link_libraries(WCSimRoot  ${ROOT_LIBRARIES})
 
+add_library(WCSimRoot_static STATIC ./src/WCSimRootEvent.cc ./src/WCSimRootGeom.cc ./src/WCSimPmtInfo.cc ./src/WCSimEnumerations.cc ./src/WCSimRootOptions.cc ./src/TJNuBeamFlux.cc ./src/TNRooTrackerVtx.cc WCSimRootDict.cxx)
+target_link_libraries(WCSimRoot_static  ${ROOT_LIBRARIES})
+
+set_property(TARGET WCSimRoot_static PROPERTY OUTPUT_NAME WCSim)
 
 
 #----------------------------------------------------------------------------
