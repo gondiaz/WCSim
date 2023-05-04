@@ -132,5 +132,13 @@ endif()
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
 #
-#install(TARGETS WCSim DESTINATION bin)
-
+install(TARGETS   WCSim                                   DESTINATION bin)
+install(TARGETS   WCSimRoot                               DESTINATION lib)
+install(TARGETS   WCSimRoot_static                        DESTINATION lib)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/          DESTINATION include)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/macros/           DESTINATION macros)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/src/              DESTINATION src)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/mPMT-configfiles/ DESTINATION mPMT-configfiles)
+install(FILES     ${PROJECT_SOURCE_DIR}/WCSim.mac         DESTINATION .)
+install(FILES     ${PROJECT_BINARY_DIR}/WCSimRootDict.cxx DESTINATION lib)
+install(FILES     ${PROJECT_BINARY_DIR}/libWCSimRootDict_rdict.pcm DESTINATION lib OPTIONAL)
