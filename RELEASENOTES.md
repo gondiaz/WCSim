@@ -5,6 +5,12 @@ This file contains the release notes for each version of WCSim. Release notes ca
 Recent updates
 *************************************************************
 
+Bug fix
+* Pull request #481 #482 @kmtsui: Bug fix for trigger algorithm when encountering negative hit times
+
+Documentation
+* Pull request #483 @tdealtry: There is a memory leak when reading WCSim files. Warn people not to produce or analyse more than O(1000) events per job
+
 *************************************************************
 01/10/2024: Notes for v1.12.17
 *************************************************************
