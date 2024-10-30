@@ -5,11 +5,18 @@ This file contains the release notes for each version of WCSim. Release notes ca
 Recent updates
 *************************************************************
 
+
+*************************************************************
+30/10/2024: Notes for v1.12.18
+*************************************************************
+New release after #488. No physics output change, just a difference in the geofile/WCSimRootGeom output
+
 Bug fix
 * Pull request #481 #482 @kmtsui: Bug fix for trigger algorithm when encountering negative hit times
+* Pull request #488 @kmtsui: Fix cylLocation for WCTE & nuPRISM detectors
 
 Documentation
-* Pull request #483 @tdealtry: There is a memory leak when reading WCSim files. Warn people not to produce or analyse more than O(1000) events per job
+* Pull request #483 @tdealtry #489 @gondiaz: There is a memory leak when reading WCSim files. Warn people not to produce or analyse more than O(1000) events per job
 
 *************************************************************
 01/10/2024: Notes for v1.12.17
